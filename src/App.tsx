@@ -10,12 +10,22 @@ import axiosClient from "./AxiosClient";
 const App = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [posts, setPosts] = useState<any[]>([]);
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")!);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!loggedInUser);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     axiosClient
       .get("/users")
-      .then(({ data }) => setUsers(data))
-      .catch((error) => console.error("Error fetching users:", error));
-  }, []);
+      .then(({ data }) => {
+        setUsers(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        setIsLoading(false);
+      });
+  }, [users]);
 
   useEffect(() => {
     axiosClient.get("/posts?_limit=20").then(({ data }) => {
@@ -25,14 +35,27 @@ const App = () => {
   return (
     <div className="grid sm:grid-cols-3 grid-cols-1">
       <div className="sm:w-[90%]">
-        <Sidebar />
+        <Sidebar
+          setIsUserLoggedIn={setIsUserLoggedIn}
+          loggedInUser={loggedInUser}
+        />
       </div>
       <div className="col-span-2">
         <Routes>
           <Route path="/*" element={<Home posts={posts} />} />
           <Route path="/discover" element={<Discover users={users} />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/login" element={<Login users={users} />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile setIsUserLoggedIn={setIsUserLoggedIn} users={users} />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Login users={users} onLogin={() => setIsUserLoggedIn(true)} />
+            }
+          />
         </Routes>
       </div>
     </div>

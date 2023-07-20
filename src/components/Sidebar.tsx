@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import Logout from "./Logout";
 
-const Sidebar = () => {
+const Sidebar = ({ setIsUserLoggedIn, loggedInUser }: any) => {
   return (
     <div className="hidden min-h-screen fixed bg-blue-500 w-[27%] sm:flex">
       <div className="flex flex-col items-center w-[100%] mt-28">
@@ -15,19 +16,32 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="text-[18px] mt-4">
-              <Link to={"/discover"} className="cursor-pointer hover:font-semibold">
+              <Link
+                to={"/discover"}
+                className="cursor-pointer hover:font-semibold"
+              >
                 Discover
               </Link>
             </li>
             <li className="text-[18px] mt-4">
-              <Link to={"/profile"} className="cursor-pointer hover:font-semibold">
+              <Link
+                to={"/profile"}
+                className="cursor-pointer hover:font-semibold"
+              >
                 Profile
               </Link>
             </li>
             <div className="mt-10">
-              <button className="outline rounded-xl py-2 px-5 hover:bg-black hover:outline-none hover:text-white">
-                Logout
-              </button>
+              {loggedInUser ? (
+                <Logout setIsUserLoggedIn={setIsUserLoggedIn} />
+              ) : (
+                <Link
+                  to={"/login"}
+                  className="outline rounded-xl py-2 px-5 hover:bg-black hover:outline-none hover:text-white"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </ul>
         </div>
