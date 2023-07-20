@@ -1,8 +1,8 @@
-import UserInfo from "../components/UserInfo";
+import UserInfo from "../components/UserInfoList";
 
-const Discover = ({ users }: any) => {
+const Discover = ({ users, loggedInUser }: any) => {
   const displayUsers = users.map((user: { id: any }) => (
-    <UserInfo key={user.id} user={user} />
+    <UserInfo key={user.id} user={user} loggedInUser={ loggedInUser} />
   ));
   if (!users || users.length === 0) {
     return (

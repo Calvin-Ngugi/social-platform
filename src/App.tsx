@@ -10,6 +10,7 @@ import axiosClient from "./AxiosClient";
 const App = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [posts, setPosts] = useState<any[]>([]);
+  // Check if a user is already logged in
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")!);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!loggedInUser);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,11 +44,18 @@ const App = () => {
       <div className="col-span-2">
         <Routes>
           <Route path="/*" element={<Home posts={posts} />} />
-          <Route path="/discover" element={<Discover users={users} />} />
+          <Route
+            path="/discover"
+            element={<Discover users={users} loggedInUser={loggedInUser} />}
+          />
           <Route
             path="/profile"
             element={
-              <Profile setIsUserLoggedIn={setIsUserLoggedIn} users={users} />
+              <Profile
+                setIsUserLoggedIn={setIsUserLoggedIn}
+                users={users}
+                loggedInUser={loggedInUser}
+              />
             }
           />
           <Route

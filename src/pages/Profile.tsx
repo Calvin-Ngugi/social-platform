@@ -1,10 +1,7 @@
 import UserProfile from "../components/UserProfile";
 import Login from "./Login";
 
-const Profile = ({ setIsUserLoggedIn, users }:any) => {
-  // Check if a user is already logged in
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")!);
-
+const Profile = ({ setIsUserLoggedIn, users, loggedInUser }:any) => {
   return (
     <div>
       {loggedInUser ? (

@@ -1,5 +1,5 @@
 import { FaUser } from "react-icons/fa";
-const UserInfo = ({ user }: any) => {
+const UserInfo = ({ user, loggedInUser }: any) => {
   return (
     <div className="flex items-center gap-4 mt-10 w-[100%]">
       <div className="rounded-full outline p-2">
@@ -12,7 +12,17 @@ const UserInfo = ({ user }: any) => {
           <div>{user.address.street}</div>
         </div>
         <div>
-          <button className="bg-blue-500 rounded-lg p-2 hover:bg-blue-700">Follow</button>
+          {loggedInUser ? (
+            <button
+              className="bg-blue-500 rounded-lg p-2 hover:bg-blue-700"
+            >
+              Follow
+            </button>
+          ) : (
+            <button className="bg-slate-500 rounded-lg p-2 cursor-not-allowed" disabled>
+              Follow
+            </button>
+          )}
         </div>
       </div>
     </div>
