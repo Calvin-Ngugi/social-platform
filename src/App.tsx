@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
-import Discover from "./components/Discover";
-import Profile from "./components/Profile";
-import Login from "./components/Login";
+import Discover from "./pages/Discover";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import axiosClient from "./AxiosClient";
 
@@ -11,7 +11,8 @@ const App = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [posts, setPosts] = useState<any[]>([]);
   useEffect(() => {
-    axiosClient.get("/users")
+    axiosClient
+      .get("/users")
       .then(({ data }) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
