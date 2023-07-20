@@ -1,9 +1,9 @@
 import Feed from "../components/Feed";
 
-const Home = () => {
+const Home = ({posts}: any) => {
   return (
     <div>
-      <Feed />
+      <Feed posts={ posts } />
     </div>
   );
 };

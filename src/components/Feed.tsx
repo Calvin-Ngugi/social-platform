@@ -1,17 +1,7 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../AxiosClient";
 import Posts from "./Posts";
 
-const Feed = () => {
-    const [posts, setPosts] = useState<any[]>([]);
-    useEffect(() => {
-        axiosClient.get('/posts?_limit=')
-            .then(({ data }) => {
-            setPosts(data);
-        })
-    }, [posts])
-
-    const displayposts = posts.map(post => (
+const Feed = ({ posts }: any) => {
+    const displayposts = posts.map((post: { id: any; }) => (
         <Posts posts={post} key={ post.id} />
     ))
   return (

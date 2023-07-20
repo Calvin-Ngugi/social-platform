@@ -44,6 +44,7 @@ const Login = ({ users }: any) => {
               type="password"
               placeholder="Enter your Password"
               className="border-2 outline-none border-slate-600 p-3 rounded-md"
+              autoComplete="currentPassword"
               value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
