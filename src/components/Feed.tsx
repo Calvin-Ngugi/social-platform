@@ -5,7 +5,7 @@ import Posts from "./Posts";
 const Feed = () => {
     const [posts, setPosts] = useState<any[]>([]);
     useEffect(() => {
-        axiosClient.get('/posts')
+        axiosClient.get('/posts?_limit=')
             .then(({ data }) => {
             setPosts(data);
         })

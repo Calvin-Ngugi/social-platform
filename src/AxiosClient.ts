@@ -10,7 +10,7 @@ interface AxiosClient {
 
 // Create an instance of Axios and implement the AxiosClient interface
 const axiosClient: AxiosInstance & AxiosClient = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com',
+    baseURL: `${import.meta.env.VITE_API_BASE_URL}`,
     headers: {
         'Content-Type': 'application/json',
     },

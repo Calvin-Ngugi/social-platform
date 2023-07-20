@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="hidden min-h-screen fixed bg-blue-500 w-[28%] sm:flex">
+    <div className="hidden min-h-screen fixed bg-blue-500 w-[27%] sm:flex">
       <div className="flex flex-col items-center w-[100%] mt-28">
         <div>
           <div className="text-center font-semibold text-[28px]">
