@@ -1,6 +1,6 @@
 const Sidebar = () => {
   return (
-    <div className="hidden min-h-screen lg:w-[20%] w-[30%] bg-blue-500 md:flex">
+    <div className="hidden min-h-screen bg-blue-500 sm:flex">
       <div className="flex flex-col items-center w-[100%] mt-28">
         <div>
           <div className="text-center font-semibold text-[28px]">

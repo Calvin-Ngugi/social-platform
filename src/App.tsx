@@ -1,9 +1,7 @@
-import Index from "./pages"
+import Home from "./pages/Home";
 
 const App = () => {
-  return (
-    <Index />
-  )
-}
+  return <Home />;
+};
 
-export default App
+export default App;
