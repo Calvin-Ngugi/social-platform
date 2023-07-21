@@ -1,5 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { BiHome, BiMenuAltLeft } from "react-icons/bi";
+import { MdOutlineExplore } from "react-icons/md";
+import { FaUsers } from "react-icons/fa";
+import { ImProfile } from "react-icons/im";
 import Logout from "./Logout";
 import { useState } from "react";
 
@@ -27,31 +30,38 @@ const Sidebar = ({ setIsUserLoggedIn, loggedInUser }: any) => {
             </div>
             <ul className="gap-5">
               <li className="text-[18px] mt-4">
-                <Link to={"/"} className="cursor-pointer hover:font-semibold">
+                <Link
+                  to={"/"}
+                  className="flex items-center gap-1 cursor-pointer hover:font-semibold"
+                >
+                  <BiHome />
                   Home
                 </Link>
               </li>
               <li className="text-[18px] mt-4">
                 <Link
                   to={"/discover"}
-                  className="cursor-pointer hover:font-semibold"
+                  className="flex items-center gap-1 cursor-pointer hover:font-semibold"
                 >
+                  <MdOutlineExplore />
                   Discover
                 </Link>
               </li>
               <li className="text-[18px] mt-4">
                 <Link
                   to={"/following"}
-                  className="cursor-pointer hover:font-semibold"
+                  className="flex items-center gap-1 cursor-pointer hover:font-semibold"
                 >
+                  <FaUsers />
                   Following
                 </Link>
               </li>
               <li className="text-[18px] mt-4">
                 <Link
                   to={"/profile"}
-                  className="cursor-pointer hover:font-semibold"
+                  className="flex items-center gap-1 cursor-pointer hover:font-semibold"
                 >
+                  <ImProfile />
                   Profile
                 </Link>
               </li>
