@@ -7,7 +7,7 @@ const Feed = ({ posts }: any) => {
   
   if (!posts || posts.length === 0) {
     return (
-      <div className="mt-20 text-[32px] font-semibold">
+      <div className="sm:ms-0 ms-10 mt-20 text-[32px] font-semibold">
         Loading...
         <img src="hourglass.gif" alt="loading" className="mt-10" />
       </div>
@@ -16,7 +16,7 @@ const Feed = ({ posts }: any) => {
 
   return (
     <div className="sm:ms-0 ms-10 mb-10 mt-20">
-      <h1 className="font-bold text-[32px]">My Feed</h1>
+      <h1 className="font-bold text-[32px]">Feed</h1>
       {displayposts}
     </div>
   );

@@ -22,18 +22,16 @@ const Login = ({ users, isLoading, onLogin }: any) => {
     if (matchedUser) {
       // User login successful, store user data in localStorage
       localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
-      console.log("Login successful!", matchedUser);
       onLogin();
       navigate("/profile")
     } else {
-      console.log("Invalid username or password.");
       setErrors("Invalid username or password.");
     }
   };
 
   if (isLoading) {
     return (
-      <div className="mt-20 text-[32px] font-semibold">
+      <div className="sm:ms-0 ms-10 mt-20 text-[32px] font-semibold">
         Loading...
         <img src="hourglass.gif" alt="loading" className="mt-10" />
       </div>

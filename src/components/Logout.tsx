@@ -1,12 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
-const Logout = ({ setIsUserLoggedIn }: any) => {
-  const navigate = useNavigate();
-  const onLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    setIsUserLoggedIn(false);
-    navigate("/login");
-  };
+const Logout = ({ onLogout }: any) => {
   return (
     <button
       className="outline rounded-xl py-2 px-5 hover:bg-black hover:outline-none hover:text-white"
