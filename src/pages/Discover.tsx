@@ -14,7 +14,7 @@ const Discover = ({ users, loggedInUser }: any) => {
   }
   return (
     <div className="sm:ms-0 ms-10 mt-20 mb-5">
-      <h1 className="text-[32px] font-bold">Discover New Friends</h1>
+      <h1 className="text-[32px] font-bold">Connect with all our users</h1>
       {displayUsers}
     </div>
   );

@@ -41,6 +41,14 @@ const Sidebar = ({ setIsUserLoggedIn, loggedInUser }: any) => {
               </li>
               <li className="text-[18px] mt-4">
                 <Link
+                  to={"/following"}
+                  className="cursor-pointer hover:font-semibold"
+                >
+                  Following
+                </Link>
+              </li>
+              <li className="text-[18px] mt-4">
+                <Link
                   to={"/profile"}
                   className="cursor-pointer hover:font-semibold"
                 >
@@ -84,6 +92,12 @@ const Sidebar = ({ setIsUserLoggedIn, loggedInUser }: any) => {
                   onClick={() => setIsMenu(false)}
                 >
                   <Link to={"/discover"}>Discover</Link>
+                </li>
+                <li
+                  className="cursor-pointer hover:font-medium hover:underline"
+                  onClick={() => setIsMenu(false)}
+                >
+                  <Link to={"/following"}>Following</Link>
                 </li>
                 <li
                   className="cursor-pointer hover:font-medium hover:underline"

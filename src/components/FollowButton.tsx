@@ -7,6 +7,8 @@ const FollowButton = ({ user, loggedInUser }: any) => {
     // Check if the current user is following the user on component mount
     setIsFollowing(localStorage.getItem(`follow_${user.id}`) === "true");
   }, [user.id]);
+  console.log(localStorage.getItem(`follow_${user.id}`));
+  
 
   const handleFollow = () => {
     setIsFollowing(true);

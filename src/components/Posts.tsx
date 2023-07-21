@@ -1,6 +1,7 @@
 import { FaUser, FaComments } from "react-icons/fa";
 import {AiOutlineShareAlt } from "react-icons/ai";
 import Like from "./Like";
+import { Link } from "react-router-dom";
 
 const Posts = ({ posts }: any) => {
   
@@ -13,13 +14,13 @@ const Posts = ({ posts }: any) => {
       <div className="mb-5">
         <p>{posts.body}</p>
       </div>
-      <div className="flex items-center justify-between">
-        <Like />
-        <div className="flex items-center gap-2">
-          <FaComments className="cursor-pointer" /> Comment
-        </div>
-        <div className="flex items-center gap-2">
-          <AiOutlineShareAlt className="cursor-pointer" /> Share
+      <div className="flex items-center cursor-pointer justify-between">
+        <Like /> 
+        <Link to={`/posts/${posts.id}`} className="flex items-center gap-2 cursor-pointer">
+          <FaComments /> Comment
+        </Link>
+        <div className="flex items-center gap-2 cursor-pointer">
+          <AiOutlineShareAlt /> Share
         </div>
       </div>
     </div>

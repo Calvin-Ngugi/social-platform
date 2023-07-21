@@ -6,6 +6,8 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import axiosClient from "./AxiosClient";
+import Following from "./pages/Following";
+import SinglePost from "./pages/SinglePost";
 
 const App = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -28,11 +30,13 @@ const App = () => {
       });
   }, [users]);
 
+  const postLimit = 20
   useEffect(() => {
-    axiosClient.get("/posts?_limit=20").then(({ data }) => {
+    axiosClient.get(`/posts?_limit=${postLimit}`).then(({ data }) => {
       setPosts(data);
     });
   }, [posts]);
+  
   return (
     <div className="grid sm:grid-cols-3 grid-cols-1">
       <div className="sm:w-[90%]">
@@ -49,15 +53,21 @@ const App = () => {
             element={<Discover users={users} loggedInUser={loggedInUser} />}
           />
           <Route
+            path="/following"
+            element={<Following loggedInUser={loggedInUser} />}
+          />
+          <Route
             path="/profile"
             element={
               <Profile
                 setIsUserLoggedIn={setIsUserLoggedIn}
                 users={users}
                 loggedInUser={loggedInUser}
+                posts={posts}
               />
             }
           />
+          <Route path="/posts/:id" element={ <SinglePost />} />
           <Route
             path="/login"
             element={
