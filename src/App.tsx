@@ -32,7 +32,7 @@ const App = () => {
 
   const postLimit = 20
   useEffect(() => {
-    axiosClient.get(`/posts?_limit=${postLimit}`).then(({ data }) => {
+    axiosClient.get(`/posts`).then(({ data }) => {
       setPosts(data);
     });
   }, [posts]);
@@ -67,7 +67,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/posts/:id" element={ <SinglePost />} />
+          <Route path="/posts/:id" element={ <SinglePost loggedInUser={loggedInUser}/>} />
           <Route
             path="/login"
             element={

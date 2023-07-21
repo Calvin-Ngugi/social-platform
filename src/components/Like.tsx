@@ -7,13 +7,8 @@ const Like = () => {
       setLikes(!likes);
     };
   return (
-    <div className="flex items-center gap-2" onClick={like}>
-      {likes ? (
-        <AiFillLike className="cursor-pointer" />
-      ) : (
-        <AiOutlineLike className="cursor-pointer" />
-      )}{" "}
-      Like
+    <div className="flex items-center gap-2 cursor-pointer" onClick={like}>
+      {likes ? <AiFillLike /> : <AiOutlineLike />} Like
     </div>
   );
 }
