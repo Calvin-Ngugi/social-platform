@@ -1,6 +1,27 @@
 import { FaUser } from "react-icons/fa";
 import FollowButton from "./FollowButton";
-const UserInfo = ({ user, loggedInUser}: any) => {
+import { useEffect, useState } from 'react';
+
+const UserInfo = ({ user, loggedInUser }: any) => {
+
+  const [isFollowing, setIsFollowing] = useState(false);
+  console.log(isFollowing);
+  
+  useEffect(() => {
+    // Check if the current user is following the user on component mount
+    setIsFollowing(localStorage.getItem(`follow_${user.id}`) === "true");
+  }, [user.id]);
+
+  const handleFollow = () => {
+    setIsFollowing(true);
+    localStorage.setItem(`follow_${user.id}`, "true");
+  };
+
+  const handleUnfollow = () => {
+    setIsFollowing(false);
+    localStorage.removeItem(`follow_${user.id}`);
+  };
+
   return (
     <div className="flex items-center gap-4 mt-10 w-[100%]">
       <div className="rounded-full outline p-2">
@@ -16,6 +37,9 @@ const UserInfo = ({ user, loggedInUser}: any) => {
           <FollowButton
             user={user}
             loggedInUser={loggedInUser}
+            isFollowing={isFollowing}
+            handleFollow={handleFollow}
+            handleUnfollow={handleUnfollow}
           />
         </div>
       </div>

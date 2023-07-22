@@ -10,7 +10,7 @@ const Following = ({ loggedInUser }: any) => {
     if (loggedInUser) {
       // Get the list of followed user IDs from localStorage
       const followedUserIdsStr = localStorage.getItem(
-        `followed_users_${loggedInUser.id}`
+        `follow`
       );
       const followedUserIds = followedUserIdsStr
         ? followedUserIdsStr.split(",")

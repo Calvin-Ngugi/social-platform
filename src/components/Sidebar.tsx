@@ -56,15 +56,17 @@ const Sidebar = ({
                   Discover
                 </Link>
               </li>
-              <li className="text-[18px] mt-4">
-                <Link
-                  to={"/following"}
-                  className="flex items-center gap-1 cursor-pointer hover:font-semibold"
-                >
-                  <FaUsers />
-                  Following
-                </Link>
-              </li>
+              {loggedInUser && (
+                <li className="text-[18px] mt-4">
+                  <Link
+                    to={"/following"}
+                    className="flex items-center gap-1 cursor-pointer hover:font-semibold"
+                  >
+                    <FaUsers />
+                    Following
+                  </Link>
+                </li>
+              )}
               <li className="text-[18px] mt-4">
                 <Link
                   to={"/profile"}
@@ -76,25 +78,29 @@ const Sidebar = ({
               </li>
             </ul>
           </div>
-          {isPremium ? (
-            <button
-              onClick={() => setShowModal(true)}
-              className="flex items-center gap-1 mt-20"
-            >
-              <FaCrown className="h-7 w-7" />
-              Premium Member
-            </button>
-          ) : (
-            <button onClick={() => setShowModal(true)} className="mt-20">
-              <div className="flex items-center gap-1 cursor-pointer hover:font-semibold">
-                <IoDiamond className="h-7 w-7" />
-                Upgrade to premium
-              </div>
-            </button>
-          )}
+          {loggedInUser &&
+            (isPremium ? (
+              <button
+                onClick={() => setShowModal(true)}
+                className="flex items-center gap-1 cursor-pointer hover:font-semibold  mt-20"
+              >
+                <FaCrown className="h-7 w-7" />
+                Premium Member
+              </button>
+            ) : (
+              <button onClick={() => setShowModal(true)} className="mt-20">
+                <div className="flex items-center gap-1 cursor-pointer hover:font-semibold">
+                  <IoDiamond className="h-7 w-7" />
+                  Upgrade to premium
+                </div>
+              </button>
+            ))}
           <div className="mt-10">
             {loggedInUser ? (
-              <Logout setIsUserLoggedIn={setIsUserLoggedIn} />
+              <Logout
+                setIsUserLoggedIn={setIsUserLoggedIn}
+                onLogout={onLogout}
+              />
             ) : (
               <Link
                 to={"/login"}

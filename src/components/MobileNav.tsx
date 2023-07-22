@@ -18,23 +18,24 @@ const MobileNav = ({
         <button onClick={handleClick}>
           <BiMenuAltLeft className="border-none w-[50px] h-8" />
         </button>
-        {isPremium ? (
-          <button
-            onClick={() => setShowModal(true)}
-            className="flex items-center gap-1 mr-4"
-          >
-            <FaCrown className="h-7 w-7" />
-            Premium Member
-          </button>
-        ) : (
-          <button
-            onClick={() => setShowModal(true)}
-            className="flex items-center gap-1 cursor-pointer hover:font-semibold mr-4"
-          >
-            <IoDiamond className="h-7 w-7" />
-            Upgrade to premium
-          </button>
-        )}
+        {loggedInUser &&
+          (isPremium ? (
+            <button
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-1 mr-4"
+            >
+              <FaCrown className="h-7 w-7" />
+              Premium Member
+            </button>
+          ) : (
+            <button
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-1 cursor-pointer hover:font-semibold mr-4"
+            >
+              <IoDiamond className="h-7 w-7" />
+              Upgrade to premium
+            </button>
+          ))}
       </div>
       <div>
         {isMenu && (

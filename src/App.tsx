@@ -49,7 +49,8 @@ const App = () => {
     const isAtBottom = scrollHeight - scrollTop === clientHeight;
 
     if (isAtBottom && !isPremium) {
-      setShowPremiumPopup(true); // Show the premium popup when user reaches the end of the posts
+      setShowPremiumPopup(true);
+      setShowModal(true); // Show the premium popup when user reaches the end of the posts
     }
   };
 
@@ -64,10 +65,10 @@ const App = () => {
     setShowModal(false);
   };
 
-  const onUnsubscribe = () => { 
+  const onUnsubscribe = () => {
     setIsPremium(false);
     setShowModal(false);
-  }
+  };
 
   return (
     <div className="grid sm:grid-cols-3 grid-cols-1">
@@ -97,21 +98,25 @@ const App = () => {
             path="/discover"
             element={<Discover users={users} loggedInUser={loggedInUser} />}
           />
-          <Route
-            path="/following"
-            element={<Following loggedInUser={loggedInUser} />}
-          />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                setIsUserLoggedIn={setIsUserLoggedIn}
-                users={users}
-                loggedInUser={loggedInUser}
-                posts={posts}
+          {loggedInUser && (
+            <>
+              <Route
+                path="/following"
+                element={<Following loggedInUser={loggedInUser} />}
               />
-            }
-          />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    setIsUserLoggedIn={setIsUserLoggedIn}
+                    users={users}
+                    loggedInUser={loggedInUser}
+                    posts={posts}
+                  />
+                }
+              />
+            </>
+          )}
           <Route
             path="/posts/:id"
             element={<SinglePost loggedInUser={loggedInUser} />}

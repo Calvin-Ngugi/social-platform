@@ -39,15 +39,18 @@ const Login = ({ users, isLoading, onLogin }: any) => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-400 sm:-ms-28">
+    <div className="min-h-screen bg-white sm:-ms-28">
       <form
         className="min-h-screen flex flex-col items-center pt-28"
         onSubmit={handleLogin}
-        >
-        <div className="flex flex-col items-center justify-center border-2 border-slate-600 bg-white gap-5 sm:w-[40%] w-[65%] h-[25em] rounded-lg p-5">
-        {errors && <div className="bg-red-300 px-4 rounded-md">{errors}</div>}
-          <h1 className="text-[30px] font-bold">Login</h1>
-          <div>
+      >
+        <div className="flex flex-col items-center justify-center border-2 border-slate-600 bg-slate-200 gap-5 sm:w-[40%] w-[65%] h-[25em] rounded-lg p-5">
+          {errors && <div className="bg-red-300 px-4 rounded-md">{errors}</div>}
+          <h1 className="text-[30px] font-bold">Login To Your Account</h1>
+          <div className="flex flex-col">
+            <label htmlFor="username" className="text-[20px] font-semibold">
+              Username:
+            </label>
             <input
               type="text"
               placeholder="Enter your Username"
@@ -57,7 +60,10 @@ const Login = ({ users, isLoading, onLogin }: any) => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div>
+          <div className="flex flex-col">
+            <label htmlFor="password" className="text-[20px] font-semibold">
+              Password:
+            </label>
             <input
               type="password"
               placeholder="Enter your Password"

@@ -1,25 +1,10 @@
-import { useEffect, useState } from "react";
-
-const FollowButton = ({ user, loggedInUser }: any) => {
-  const [isFollowing, setIsFollowing] = useState(false);
-
-  useEffect(() => {
-    // Check if the current user is following the user on component mount
-    setIsFollowing(localStorage.getItem(`follow_${user.id}`) === "true");
-  }, [user.id]);
-  console.log(localStorage.getItem(`follow_${user.id}`));
-  
-
-  const handleFollow = () => {
-    setIsFollowing(true);
-    localStorage.setItem(`follow_${user.id}`, "true");
-  };
-
-  const handleUnfollow = () => {
-    setIsFollowing(false);
-    localStorage.removeItem(`follow_${user.id}`);
-  };
-
+const FollowButton = ({
+  user,
+  loggedInUser,
+  isFollowing,
+  handleFollow,
+  handleUnfollow,
+}: any) => {
   return (
     <>
       {loggedInUser ? (
