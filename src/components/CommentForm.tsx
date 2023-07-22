@@ -2,11 +2,11 @@ const CommentForm = ({ handleAddComment, newComment, setNewComment }: any) => {
   return (
     <form
       onSubmit={handleAddComment}
-      className="flex flex-col justify-between items-baseline border-2 w-[90%] p-3 border-slate-600"
+      className="flex flex-col justify-between items-baseline w-[90%] p-3"
     >
       <input
         type="text"
-        className="outline-none text-[18px] border-slate-600 w-[100%] border-b-2 mb-2"
+        className="outline-none text-[18px] w-[100%] mb-3 "
         required
         placeholder="Reply"
         value={newComment}

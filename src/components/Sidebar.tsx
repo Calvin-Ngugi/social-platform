@@ -1,18 +1,27 @@
 import { Link, useNavigate } from "react-router-dom";
-import { BiHome, BiMenuAltLeft } from "react-icons/bi";
+import { BiHome } from "react-icons/bi";
 import { MdOutlineExplore } from "react-icons/md";
-import { FaUsers } from "react-icons/fa";
+import { FaCrown, FaUsers } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
+import { IoDiamond } from "react-icons/io5";
 import Logout from "./Logout";
 import { useState } from "react";
+import MobileNav from "./MobileNav";
 
-const Sidebar = ({ setIsUserLoggedIn, loggedInUser }: any) => {
+const Sidebar = ({
+  setIsUserLoggedIn,
+  loggedInUser,
+  setIsPremium,
+  isPremium,
+  setShowModal,
+}: any) => {
   const [isMenu, setIsMenu] = useState(false);
   const navigate = useNavigate();
 
   const onLogout = () => {
     localStorage.removeItem("loggedInUser");
     setIsUserLoggedIn(false);
+    setIsPremium(false);
     navigate("/login");
   };
 
@@ -65,73 +74,47 @@ const Sidebar = ({ setIsUserLoggedIn, loggedInUser }: any) => {
                   Profile
                 </Link>
               </li>
-              <div className="mt-10">
-                {loggedInUser ? (
-                  <Logout setIsUserLoggedIn={setIsUserLoggedIn} />
-                ) : (
-                  <Link
-                    to={"/login"}
-                    className="outline rounded-xl py-2 px-5 hover:bg-black hover:outline-none hover:text-white"
-                  >
-                    Login
-                  </Link>
-                )}
-              </div>
             </ul>
+          </div>
+          {isPremium ? (
+            <button
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-1 mt-20"
+            >
+              <FaCrown className="h-7 w-7" />
+              Premium Member
+            </button>
+          ) : (
+            <button onClick={() => setShowModal(true)} className="mt-20">
+              <div className="flex items-center gap-1 cursor-pointer hover:font-semibold">
+                <IoDiamond className="h-7 w-7" />
+                Upgrade to premium
+              </div>
+            </button>
+          )}
+          <div className="mt-10">
+            {loggedInUser ? (
+              <Logout setIsUserLoggedIn={setIsUserLoggedIn} />
+            ) : (
+              <Link
+                to={"/login"}
+                className="outline rounded-xl py-2 px-5 hover:bg-black hover:outline-none hover:text-white"
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
-
-      {/* Mobile */}
-      <div className="bg-blue-500 flex fixed sm:hidden justify-between w-[100%] m-auto pt-2 pb-3">
-        <div onClick={handleClick} className="sm:hidden cursor-pointer ms-3">
-          <BiMenuAltLeft className="border-none w-[50px] h-8" />
-        </div>
-        <div>
-          {isMenu && (
-            <div className="bg-white w-30 shadow-xl flex flex-col rounded-lg absolute top-11 left-5">
-              <ul className="flex flex-col gap-5 px-8 py-4">
-                <li
-                  className="cursor-pointer hover:font-medium hover:underline"
-                  onClick={() => setIsMenu(false)}
-                >
-                  <Link to={"/"}>Home</Link>
-                </li>
-                <li
-                  className="cursor-pointer hover:font-medium hover:underline"
-                  onClick={() => setIsMenu(false)}
-                >
-                  <Link to={"/discover"}>Discover</Link>
-                </li>
-                <li
-                  className="cursor-pointer hover:font-medium hover:underline"
-                  onClick={() => setIsMenu(false)}
-                >
-                  <Link to={"/following"}>Following</Link>
-                </li>
-                <li
-                  className="cursor-pointer hover:font-medium hover:underline"
-                  onClick={() => setIsMenu(false)}
-                >
-                  <Link to={"/profile"}>Profile</Link>
-                </li>
-                <li
-                  className="cursor-pointer hover:font-medium hover:underline"
-                  onClick={() => setIsMenu(false)}
-                >
-                  {loggedInUser ? (
-                    <div onClick={onLogout}>Logout</div>
-                  ) : (
-                    <Link to={"/login"} className="">
-                      Login
-                    </Link>
-                  )}
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
+      <MobileNav
+        handleClick={handleClick}
+        isMenu={isMenu}
+        setIsMenu={setIsMenu}
+        loggedInUser={loggedInUser}
+        onLogout={onLogout}
+        isPremium={isPremium}
+        setShowModal={setShowModal}
+      />
     </>
   );
 };
