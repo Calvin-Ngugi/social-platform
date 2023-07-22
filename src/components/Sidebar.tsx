@@ -9,7 +9,6 @@ import { useState } from "react";
 import MobileNav from "./MobileNav";
 
 const Sidebar = ({
-  setIsUserLoggedIn,
   loggedInUser,
   setIsPremium,
   isPremium,
@@ -21,7 +20,6 @@ const Sidebar = ({
   const onLogout = () => {
     localStorage.removeItem("loggedInUser");
     localStorage.removeItem(`follow_`);
-    setIsUserLoggedIn(false);
     setIsPremium(false);
     navigate("/login");
   };
@@ -99,7 +97,6 @@ const Sidebar = ({
           <div className="mt-10">
             {loggedInUser ? (
               <Logout
-                setIsUserLoggedIn={setIsUserLoggedIn}
                 onLogout={onLogout}
               />
             ) : (
