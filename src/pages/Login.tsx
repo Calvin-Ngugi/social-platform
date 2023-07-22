@@ -44,7 +44,7 @@ const Login = ({ users, isLoading, onLogin }: any) => {
         className="min-h-screen flex flex-col items-center pt-28"
         onSubmit={handleLogin}
       >
-        <div className="flex flex-col items-center justify-center border-2 border-slate-600 bg-slate-200 gap-5 sm:w-[40%] w-[65%] h-[25em] rounded-lg p-5">
+        <div className="flex flex-col items-center justify-center border-2 border-slate-600 bg-slate-200 gap-5 sm:w-[40%] w-[65%] h-[50%] rounded-lg p-5">
           {errors && <div className="bg-red-300 px-4 rounded-md">{errors}</div>}
           <h1 className="text-[30px] font-bold">Login To Your Account</h1>
           <div className="flex flex-col">

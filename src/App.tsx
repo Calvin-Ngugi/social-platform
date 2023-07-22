@@ -20,7 +20,6 @@ const App = () => {
   const [isPremium, setIsPremium] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<any | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [showPremiumPopup, setShowPremiumPopup] = useState(true);
 
   useEffect(() => {
     axiosClient
@@ -44,21 +43,7 @@ const App = () => {
   }, [isPremium]);
 
   // Scroll event handler to detect when the user reaches the end of the posts
-  const handleScroll = () => {
-    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
-    const isAtBottom = scrollHeight - scrollTop === clientHeight;
-
-    if (isAtBottom && !isPremium) {
-      setShowPremiumPopup(true);
-      setShowModal(true); // Show the premium popup when user reaches the end of the posts
-    }
-  };
-
-  // Attach the scroll event listener when the component mounts
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isPremium]); // Re-add the event listener whenever the isPremiumMember state changes
+  // Re-add the event listener whenever the isPremiumMember state changes
 
   const handlePaymentSuccess = () => {
     setIsPremium(true);
@@ -67,6 +52,7 @@ const App = () => {
 
   const onUnsubscribe = () => {
     setIsPremium(false);
+    setPaymentStatus(null);
     setShowModal(false);
   };
 
@@ -93,7 +79,16 @@ const App = () => {
           />
         )}
         <Routes>
-          <Route path="/*" element={<Home posts={posts} />} />
+          <Route
+            path="/*"
+            element={
+              <Home
+                posts={posts}
+                setShowModal={setShowModal}
+                isPremium={isPremium}
+              />
+            }
+          />
           <Route
             path="/discover"
             element={<Discover users={users} loggedInUser={loggedInUser} />}
@@ -102,7 +97,13 @@ const App = () => {
             <>
               <Route
                 path="/following"
-                element={<Following loggedInUser={loggedInUser} />}
+                element={
+                  <Following
+                    loggedInUser={loggedInUser}
+                    users={users}
+                    isPremium={isPremium}
+                  />
+                }
               />
               <Route
                 path="/profile"

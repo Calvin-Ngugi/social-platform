@@ -79,6 +79,7 @@ const SinglePost = ({ loggedInUser }: any) => {
           </span>
         </div>
         <hr />
+        {loggedInUser && (
         <div className="flex items-center justify-between my-5">
           <p className="text-[18px]">Leave a comment:</p>
           <CommentForm
@@ -87,6 +88,7 @@ const SinglePost = ({ loggedInUser }: any) => {
             setNewComment={setNewComment}
           />
         </div>
+        )}
         <hr />
       </div>
       <h2 className="font-semibold text-[20px]">Comments:</h2>

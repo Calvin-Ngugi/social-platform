@@ -53,12 +53,14 @@ const MobileNav = ({
               >
                 <Link to={"/discover"}>Discover</Link>
               </li>
-              <li
-                className="cursor-pointer hover:font-medium hover:underline"
-                onClick={() => setIsMenu(false)}
-              >
-                <Link to={"/following"}>Following</Link>
-              </li>
+              {loggedInUser && (
+                <li
+                  className="cursor-pointer hover:font-medium hover:underline"
+                  onClick={() => setIsMenu(false)}
+                >
+                  <Link to={"/following"}>Following</Link>
+                </li>
+              )}
               <li
                 className="cursor-pointer hover:font-medium hover:underline"
                 onClick={() => setIsMenu(false)}

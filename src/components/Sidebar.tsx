@@ -20,6 +20,7 @@ const Sidebar = ({
 
   const onLogout = () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem(`follow_`);
     setIsUserLoggedIn(false);
     setIsPremium(false);
     navigate("/login");
