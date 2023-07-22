@@ -18,7 +18,7 @@ const UserProfile = ({ userId }: any) => {
     axiosClient.get("/posts").then(({ data }) => {
       setPosts(data);
     });
-  }, [posts]);
+  }, []);
 
   const userPosts = posts.filter((post: any) => {
     return post.userId === userId;

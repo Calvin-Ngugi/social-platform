@@ -33,7 +33,7 @@ const App = () => {
         console.error("Error fetching users:", error);
         setIsLoading(false);
       });
-  }, [users]);
+  }, []);
 
   const postLimit = isPremium ? 100 : 20;
 
@@ -41,7 +41,7 @@ const App = () => {
     axiosClient.get(`/posts?_limit=${postLimit}`).then(({ data }) => {
       setPosts(data);
     });
-  }, [posts]);
+  }, [isPremium]);
 
   // Scroll event handler to detect when the user reaches the end of the posts
   const handleScroll = () => {
