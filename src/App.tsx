@@ -15,7 +15,9 @@ const App = () => {
   const [posts, setPosts] = useState<any[]>([]);
   // Check if a user is already logged in
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")!);
+  //eslint-disable-next-line
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(!!loggedInUser);
+  //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(true);
   const [isPremium, setIsPremium] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<any | null>(null);
