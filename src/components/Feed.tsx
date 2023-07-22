@@ -15,7 +15,7 @@ const Feed = ({ posts }: any) => {
   }
 
   return (
-    <div className="sm:ms-0 ms-10 mb-10 mt-20">
+    <div className="sm:ms-0 ms-10 mb-10 mt-12">
       <h1 className="font-bold text-[32px]">Feed</h1>
       {displayposts}
     </div>

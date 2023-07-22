@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Feed from "../components/Feed";
 import FriendsList from "../components/FriendsList";
 
-const Home = ({ posts, isPremium, setShowModal}: any) => {
+const Home = ({ posts, isPremium, setShowModal, users, followedUserIds}: any) => {
   const handleScroll = () => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     console.log(scrollHeight, scrollTop, clientHeight);
@@ -22,8 +22,8 @@ const Home = ({ posts, isPremium, setShowModal}: any) => {
   }, [isPremium]);
   return (
     <div>
-      <FriendsList />
-      <Feed posts={ posts } />
+      <FriendsList users={users} followedUserIds={followedUserIds} />
+      <Feed posts={posts} />
     </div>
   );
 };

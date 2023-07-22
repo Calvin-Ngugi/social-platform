@@ -1,35 +1,8 @@
-import { useEffect, useState } from "react";
-import axiosClient from "../AxiosClient";
+
 import Posts from "../components/Posts";
 
-const Following = ({ loggedInUser, users, isPremium }: any) => {
-  const [followingPosts, setFollowingPosts] = useState<any[]>([]);
+const Following = ({ followingPosts }: any) => {
 
-  useEffect(() => {
-    // Fetch the posts from the users that the logged-in user is following
-    if (loggedInUser) {
-      // Get the list of followed user IDs from localStorage
-      const followedUserIds = users
-        .filter(
-          (user: any) => localStorage.getItem(`follow_${user.id}`) === "true"
-        )
-        .map((user: any) => user.id);
-          console.log(followedUserIds);
-          
-      // Fetch posts from the followed users using the followedUserIds
-      const postLimit = isPremium ? 100 : 20;
-      axiosClient
-        .get(`/posts?userId=${followedUserIds.join("&userId=")}&_limit=${postLimit}`)
-        .then(({ data }) => {
-          setFollowingPosts(data);
-          console.log(data);
-          
-        })
-        .catch((error) => {
-          console.error("Error fetching followed users' posts:", error);
-        });
-    }
-  }, [loggedInUser, users, isPremium]);
 
   const displayPosts = followingPosts.map((post: any) => (
     <Posts key={post.id} posts={post} />
