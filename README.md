@@ -11,6 +11,10 @@ The first page in the app would be the homepage which contains posts from variou
 
 The posts are only limited to the first twenty if its an anonymous user or a non-premium user.
 
+Once a user tries to pass that limit while scrolling, a pop up will appear prompting the user to upgrade to premium
+
+The top part of the page contains a list of users that have been followed by the current user.
+
 ![Alt text](public/image.png)
 
 The second page in the app would be the discover page where all users are displayed and the option to follow them is allowed to authenticated users.

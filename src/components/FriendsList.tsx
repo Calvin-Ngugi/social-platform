@@ -6,7 +6,7 @@ const FriendsList = ({users, followedUserIds}: any) => {
   );
 
   const displayFriends = followedUsers.map((user: any) => (
-    <div key={user.id} className="mt-3 flex flex-col items-center cursor-pointer">
+    <div key={user.id} className="mt-3 flex flex-col items-center">
       <div className="p-2 rounded-full border-2 border-green-500">
         <FaUser className=" w-5 h-5" />
       </div>
