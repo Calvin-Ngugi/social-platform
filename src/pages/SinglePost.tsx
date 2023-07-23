@@ -41,9 +41,9 @@ const SinglePost = ({ loggedInUser }: any) => {
     // For simplicity, we'll just add the comment to the state here
     const newCommentObject = {
       postId: post.id,
-      id: comments.length + 1, // Replace this with the actual ID from the API
-      name: loggedInUser.username, // Replace this with the logged-in user's name
-      email: loggedInUser.email, // Replace this with the logged-in user's email
+      id: comments.length + 1,
+      name: loggedInUser.username,
+      email: loggedInUser.email,
       body: newComment,
     };
 

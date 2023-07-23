@@ -21,7 +21,7 @@ const Posts = ({ posts }: any) => {
   }, [posts.userId]);
 
   return (
-    <div className="rounded-md border-2 p-4 mt-10 w-[80%]">
+    <div className="rounded-md border-2 p-4 mt-8 w-[80%]">
       <div className="flex mb-3">
         <FaUser className="rounded-full outline p-1 w-7 h-7" />
         {user && <p className="font-semibold ms-2"> {user.username}</p>}

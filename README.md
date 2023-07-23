@@ -44,3 +44,4 @@ Premium users can also exceed the 20 posts limit imposed on other users and view
 Should a user choose to they can also just downgrade back to regular joe.
 
 ![Alt text](public/image-4.png)
+
