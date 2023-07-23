@@ -1,4 +1,4 @@
-import { FaUser, FaComments } from "react-icons/fa";
+import { FaUser, FaRegComments } from "react-icons/fa";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import Like from "./Like";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ const Posts = ({ posts }: any) => {
           to={`/posts/${posts.id}`}
           className="flex items-center gap-2 cursor-pointer"
         >
-          <FaComments /> Comment
+          <FaRegComments /> Comment
         </Link>
         <div className="flex items-center gap-2 cursor-pointer">
           <AiOutlineShareAlt /> Share

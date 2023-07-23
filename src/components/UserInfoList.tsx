@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 const UserInfo = ({ user, loggedInUser }: any) => {
 
   const [isFollowing, setIsFollowing] = useState(false);
-  console.log(isFollowing);
   
   useEffect(() => {
     // Check if the current user is following the user on component mount
