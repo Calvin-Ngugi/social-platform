@@ -45,3 +45,19 @@ Should a user choose to they can also just downgrade back to regular joe.
 
 ![Alt text](public/image-4.png)
 
+
+# Deliverables achieved
+
+- The app allows a non-premium user to only view 20 posts before prompting them to pay for premium content
+
+- The login for the user is the username and password is the zip code
+
+- A logged in user can view their posts, information and logout
+
+- Mock payment available for user to go premium
+
+- Users can follow other users and get access to their posts.
+
+- A user can like posts from other users
+
+- A user can comment on other users' posts
